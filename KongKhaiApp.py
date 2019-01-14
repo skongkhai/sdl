@@ -14,4 +14,4 @@ def index():
 
 
 if __name__ == "__main__":
-    KongkhaiApp.run(debug=False)
+    KongkhaiApp.run(port="80")
