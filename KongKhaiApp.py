@@ -1,9 +1,9 @@
 import flask
 
-KongkhaiApp = flask.Flask(__name__)
+App = flask.Flask(__name__)
 
 
-@KongkhaiApp.route('/')
+@App.route('/')
 def index():
     every = []
     with open("persistence/KongkhaiStore.txt", "r") as m:
@@ -14,4 +14,4 @@ def index():
 
 
 if __name__ == "__main__":
-    KongkhaiApp.run(port="80")
+    App.run(port="80")
