@@ -1,0 +1,3 @@
+{"name": "Viva Collection Blender HR3556/00", "price": "$3.99", "img": "images/blender.jpg"}
+{"name": "Mid-Century 96.5 cm Bookshelf", "price": "$133", "img": "images/bookshelf.jpg", "amt": 0}
+{"name": "Kuma Multi-Purpose Chef Knife", "price": "$13", "img": "images/knife.jpg", "amt": 2}

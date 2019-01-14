@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #FFF8E8;
+    height: 100vh;
+}
+.product-name{
+    color: #888888;
+}
+#toptext{
+    text-align: center;
+    padding-bottom: 30px;
+}
+#topb{
+    padding-bottom: 8%;
+}
+#check{
+    padding-right: 100px;
+    float: right;
+}
+#check button{
+    background-color: lightgreen;
+}
+.amount.out, .out{
+    background-color: red;
+}
+.amount{
+    background-color: black;
+    position: absolute;
+    left: 42%;
+    top: 3%;
+    text-align: center;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+#filt{
+    padding-left: 100px;
+    float:left;
+}
+#filt button{
+    background-color: gray;
+}
+#topb button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.listing{
+    position: relative;
+    display: inline-block;
+    margin-right: 6%;
+    margin-bottom: 10%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    height: 300px;
+    width: 300px;
+    text-align: center;
+    font-family: arial;
+}
+.listing:nth-child(3n){
+    margin-left: 100px;
+}
+.listing-img{
+    border-bottom: 2px solid gray;
+    height: 100%;
+    width: 100%;
+}
+.listing-body .in-cart, .listing-body .available, .listing-body .out {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+.listing-body .in-cart{
+    background-color: orange;
+}
+.listing-body .available{
+    background-color: lightgreen;
+}
+.listing-body .out{
+    background-color: red;
+}
+.listing-body button:hover {
+    opacity: 0.7;
+}
+.listing-body{
+    background-color: #E5E5E8;
+}

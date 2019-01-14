@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+    <link rel="stylesheet" href="{{url_for("static", filename = "ProdList.css")}}"/>
+</head>
+<body>
+    <div id="toptext">
+        <h1>Product List</h1>
+        <p>Purchase home products from our subscribers</p>
+    </div>
+    <div id="topb">
+        <a href="#" id="filt"><button>Filter</button></a>
+        <a href="#" id="check"><button>Checkout <br> 0 item(s) in cart</button></a>
+    </div>
+    {% for i in range(every| length) %}
+        <div class="listing">
+            <img class="listing-img" src="{{url_for("static", filename = every[i]["img"])}}" alt="Listing Image">
+            {% if "amt" in every[i].keys() %}
+                {% if every[i]["amt"] == 0 %}
+                    <div class="amount out">0x</div>
+                {% else %}
+                    <div class="amount {{every[i]["amt"]}}">{{ every[i]["amt"] }}x</div>
+                {% endif %}
+            {% endif %}
+            <div class="listing-body">
+                <a href="#" class="product-name">{{ every[i]["name"] }}</a>
+                {% if "amt" in every[i].keys() %}
+                    {% if every[i]["amt"] == 0 %}
+                        <button class="out">{{ every[i]["price"] }} each<br> Out of stock</button>
+                    {% else %}
+                        <button class="available" onclick="buyamt(this)">{{ every[i]["price"] }} each<br> Add to Cart</button>
+                    {% endif %}
+                {% else %}
+                    <button class="available" onclick="buy(this)">{{ every[i]["price"] }}<br> Add to Cart</button>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+<script>
+    var items = 0
+    function buy(that){
+        that.className = "in-cart"
+        that.childNodes[2].textContent = "Remove?"
+        that.onmouseover = function(){that.childNodes[2].textContent = "Remove?"}
+        that.onmouseout = function(){that.childNodes[2].textContent = "In-cart"}
+        items++
+        checko = document.getElementById("check")
+        checko.childNodes[0].innerHTML = "Checkout <br>" + items + " item(s) in cart"
+        that.setAttribute( "onClick", "javascript: cancel(this)")
+    }
+    function cancel(that){
+        that.className = "available"
+        that.childNodes[2].textContent = "Add to cart"
+        that.onmouseover = function(){}
+        that.onmouseout = function(){}
+        items--
+        checko = document.getElementById("check")
+        checko.childNodes[0].innerHTML = "Checkout <br>" + items + " item(s) in cart"
+        that.setAttribute( "onClick", "javascript: buy(this)")
+    }
+    function buyamt(that){
+        var amoun = Number(prompt("Enter amount you wish to buy."))
+        if (amoun <= that.parentNode.previousElementSibling.classList.item(1) && amoun > 0){
+            that.className = "in-cart " + amoun
+            that.childNodes[2].textContent = "Remove?"
+            that.onmouseover = function() {that.childNodes[2].textContent = "Remove?"}
+            that.onmouseout = function() {that.childNodes[2].textContent = amoun + " in-cart"}
+            items += Number(amoun)
+            checko = document.getElementById("check")
+            checko.childNodes[0].innerHTML = "Checkout <br>" + items + " item(s) in cart"
+            that.setAttribute("onClick", "javascript: cancelamt(this)")
+        }
+    }
+    function cancelamt(that){
+        var amoun = that.className[that.className.length -1]
+        that.className = "available"
+        that.childNodes[2].textContent = "Add to cart"
+        that.onmouseover = function(){}
+        that.onmouseout = function(){}
+        items -= amoun
+        checko = document.getElementById("check")
+        checko.childNodes[0].innerHTML = "Checkout <br>" + items + " item(s) in cart"
+        that.setAttribute( "onClick", "javascript: buyamt(this)")
+    }
+
+</script>
+</body>
+</html>
