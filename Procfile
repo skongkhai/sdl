@@ -1,1 +1,1 @@
-web: gunicorn KongkhaiApp:App
+web: gunicorn KongKhaiApp:App
